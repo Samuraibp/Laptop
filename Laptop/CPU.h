@@ -10,7 +10,7 @@ public:
 	void set_name(const char* Name);
 	void set_core(int core);
 	void set_flow(int flow);
-	char* get_name();
+	const char* get_name();
 	int get_core();
 	int get_flow();
 };

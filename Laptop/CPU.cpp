@@ -26,7 +26,7 @@ void CPU::set_flow(int Flow)
 	flow = Flow;
 }
 
-char* CPU::get_name()
+const char* CPU::get_name()
 {
 	return name;
 }
