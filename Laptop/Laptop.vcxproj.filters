@@ -21,12 +21,18 @@
     <ClInclude Include="SDD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GPU.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPU.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SDD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GPU.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,12 +9,18 @@ SDD::SDD(const char* Name, int Memory)
 	memory = Memory;
 }
 
+void SDD::set_SDD_name(const char* Name)
+{
+	name = new char[strlen(Name) + 1];
+	strcpy_s(name, strlen(Name) + 1, Name);
+}
+
 void SDD::set_memory(int Mem)
 {
 	memory = Mem;
 }
 
-const char* SDD::get_name()
+const char* SDD::get_SDD_name()
 {
 	return name;
 }

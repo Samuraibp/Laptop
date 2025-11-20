@@ -7,10 +7,10 @@ private:
 	int flow;
 public:
 	CPU(const char* Name, int Core, int Flow);
-	void set_name(const char* Name);
+	void set_CPU_name(const char* Name);
 	void set_core(int core);
 	void set_flow(int flow);
-	const char* get_name();
+	const char* get_CPU_name();
 	int get_core();
 	int get_flow();
 };
