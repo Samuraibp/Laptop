@@ -2,27 +2,34 @@
 #include <iostream>
 using namespace std;
 
-CPU::CPU(const char* Name, int Core, int Flow)
-{
-	name = new char[strlen(Name) + 1];
-	strcpy_s(name, strlen(Name) + 1, Name);
-	core = Core;
-	flow = Flow;
-}
-
-void CPU::set_CPU_name(const char* Name)
+CPU::CPU(const char* Name, int Core, int Flow): core(Core), flow(Flow)
 {
 	name = new char[strlen(Name) + 1];
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void CPU::set_core(int Core)
+void CPU::set_CPU_name()
 {
+	char Name[100];
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.getline(Name, sizeof(Name));
+	if (name != nullptr) delete[]name;
+	name = new char[strlen(Name) + 1];
+	strcpy_s(name, strlen(Name) + 1, Name);
+}
+
+void CPU::set_core()
+{
+	int Core;
+	cin >> Core;
 	core = Core;
 }
 
-void CPU::set_flow(int Flow)
+
+void CPU::set_flow()
 {
+	int Flow;
+	cin >> Flow;
 	flow = Flow;
 }
 
@@ -39,4 +46,9 @@ int CPU::get_core()
 int CPU::get_flow()
 {
 	return flow;
+}
+
+CPU::~CPU()
+{
+	if (name != nullptr) delete[]name;
 }
