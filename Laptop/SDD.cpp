@@ -15,7 +15,7 @@ void SDD::set_SDD_name(const char* Name)
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void SDD::set_memory(int Mem)
+void SDD::set_SDD_memory(int Mem)
 {
 	memory = Mem;
 }
