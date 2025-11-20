@@ -125,11 +125,13 @@
   <ItemGroup>
     <ClInclude Include="CPU.h" />
     <ClInclude Include="GPU.h" />
+    <ClInclude Include="RAM.h" />
     <ClInclude Include="SDD.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPU.cpp" />
     <ClCompile Include="GPU.cpp" />
+    <ClCompile Include="RAM.cpp" />
     <ClCompile Include="SDD.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
