@@ -13,6 +13,7 @@ public:
 	const char* get_CPU_name();
 	int get_core();
 	int get_flow();
+	CPU(const CPU &cpu);
 	~CPU();
 };
 

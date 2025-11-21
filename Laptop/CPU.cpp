@@ -48,6 +48,12 @@ int CPU::get_flow()
 	return flow;
 }
 
+CPU::CPU(const CPU& cpu): core(cpu.core), flow(cpu.flow)
+{
+	name = new char[strlen(cpu.name) + 1];
+	strcpy_s(name, strlen(cpu.name) + 1, cpu.name);
+}
+
 CPU::~CPU()
 {
 	if (name != nullptr) delete[]name;
