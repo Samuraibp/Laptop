@@ -47,6 +47,12 @@ int GPU::get_clock_frequency()
 	return clock_frequency;
 }
 
+GPU::GPU(const GPU& gpu): memory(gpu.memory), clock_frequency(gpu.clock_frequency)
+{
+	name = new char[strlen(gpu.name) + 1];
+	strcpy_s(name, strlen(gpu.name) + 1, gpu.name);
+}
+
 GPU::~GPU()
 {
 	if (name != nullptr) delete[]name;

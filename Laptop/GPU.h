@@ -12,6 +12,7 @@ public:
 	const char* get_GPU_name();
 	int get_GPU_memory();
 	int get_clock_frequency();
+	GPU(const GPU& gpu);
 	~GPU();
 };
 
