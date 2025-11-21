@@ -15,6 +15,7 @@ public:
 	int get_RAM_memory();
 	int get_RAM_clock_frequency();
 	const char* get_RAM_memory_type();
+	RAM(const RAM& ram);
 	~RAM();
 };
 

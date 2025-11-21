@@ -64,6 +64,14 @@ const char* RAM::get_RAM_memory_type()
 	return memory_type;
 }
 
+RAM::RAM(const RAM& ram) : memory(ram.memory), clock_frequency(ram.clock_frequency)
+{
+	name = new char[strlen(ram.name) + 1];
+	strcpy_s(name, strlen(ram.name) + 1, ram.name);
+	memory_type = new char[strlen(ram.memory_type) + 1];
+	strcpy_s(memory_type, strlen(ram.memory_type) + 1, memory_type);
+}
+
 RAM::~RAM()
 {
 	if (name != nullptr) delete[]name;
