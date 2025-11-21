@@ -8,28 +8,21 @@ CPU::CPU(const char* Name, int Core, int Flow): core(Core), flow(Flow)
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void CPU::set_CPU_name()
+void CPU::set_CPU_name(const char* Name)
 {
-	char Name[100];
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cin.getline(Name, sizeof(Name));
 	if (name != nullptr) delete[]name;
 	name = new char[strlen(Name) + 1];
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void CPU::set_core()
+void CPU::set_core(int Core)
 {
-	int Core;
-	cin >> Core;
 	core = Core;
 }
 
 
-void CPU::set_flow()
+void CPU::set_flow(int Flow)
 {
-	int Flow;
-	cin >> Flow;
 	flow = Flow;
 }
 
