@@ -9,6 +9,7 @@ public:
 	void set_SDD_memory();
 	const char* get_SDD_name();
 	int get_memory();
+	SDD(const SDD& sdd);
 	~SDD();
 };
 
