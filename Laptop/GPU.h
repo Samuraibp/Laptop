@@ -1,7 +1,7 @@
 #pragma once
 class GPU
 {
-	char* name;
+	char* name = nullptr;
 	int memory;
 	int clock_frequency;
 public:

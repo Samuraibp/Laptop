@@ -1,7 +1,7 @@
 #pragma once
 class SDD
 {
-	char* name;
+	char* name = nullptr;
 	int memory;
 public:
 	SDD(const char* name, int memory);

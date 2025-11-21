@@ -1,10 +1,10 @@
 #pragma once
 class RAM
 {
-	char* name;
+	char* name = nullptr;
 	int memory;
 	int clock_frequency;
-	char* memory_type;
+	char* memory_type = nullptr;
 public:
 	RAM(const char* Name, int mem, int clock, const char* type);
 	void set_RAM_name();

@@ -56,8 +56,5 @@ void Laptop::set_Lap_cpu()
     cpu->set_flow(Flow);
 }
 
-void Laptop::set_Lap_sdd()
-{
-}
 
 

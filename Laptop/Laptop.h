@@ -6,9 +6,9 @@
 
 class Laptop
 {
-	char* name;
+	char* name = nullptr;
 	int price;
-	char* color;
+	char* color = nullptr;
 	CPU* cpu;
 	SDD* sdd;
 	GPU* gpu;
