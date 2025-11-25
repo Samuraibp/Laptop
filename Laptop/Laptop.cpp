@@ -88,4 +88,53 @@ void Laptop::set_Lap_gpu()
     gpu->set_GPU_clock_frequency(clock);
 }
 
+void Laptop::set_Lap_ram()
+{
+    char Name[100];
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.getline(Name, sizeof(Name));
+    delete[] ram->get_RAM_name();
+    gpu->set_GPU_name(Name);
+
+    int mem;
+    cin >> mem;
+    ram->set_RAM_memory(mem);
+
+    int clock;
+    cin >> clock;
+    ram->set_RAM_clock_frequency(clock);
+
+    char type[100];
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.getline(type, sizeof(type));
+    delete[] ram->get_RAM_memory_type();
+    ram->set_RAM_memory_type(type);
+}
+
+const char* Laptop::get_Lap_name()
+{
+    return name;
+}
+
+int Laptop::get_Lap_price()
+{
+    return price;
+}
+
+const char* Laptop::get_Lap_color()
+{
+    return color;
+}
+
+Laptop::Laptop(const Laptop& lap): price(lap.price)
+{
+    if (lap.name)
+    {
+        name = new char[strlen(lap.name) + 1];
+        strcpy_s(name, strlen(lap.name) + 1, lap.name);
+    }
+    else name = nullptr;
+
+}
+
 
