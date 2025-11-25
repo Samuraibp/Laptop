@@ -4,11 +4,17 @@ using namespace std;
 
 Laptop::Laptop(const char* Name, int prc, const char* Color, CPU* Cpu, SDD* Sdd, GPU* Gpu, RAM* Ram): price(prc), cpu(Cpu), sdd(Sdd), gpu(Gpu), ram(Ram)
 {
-    name = new char[strlen(Name) + 1];
-    strcpy_s(name, strlen(Name) + 1, Name);
+    if (Name) {
+        name = new char[strlen(Name) + 1];
+        strcpy_s(name, strlen(Name) + 1, Name);
+    }
+    else name = nullptr;
 
-    color = new char[strlen(Color) + 1];
-    strcpy_s(color, strlen(Color) + 1, Color);
+    if (Color) {
+        color = new char[strlen(Color) + 1];
+        strcpy_s(color, strlen(Color) + 1, Color);
+    }
+    else color = nullptr;
 }
 
 void Laptop::set_Lap_name()
