@@ -135,6 +135,25 @@ Laptop::Laptop(const Laptop& lap): price(lap.price)
     }
     else name = nullptr;
 
+    if (lap.color)
+    {
+        color = new char[strlen(lap.color) + 1];
+        strcpy_s(color, strlen(lap.color) + 1, lap.color);
+    }
+    else color = nullptr;
+
+    cpu = lap.cpu ? new CPU(*lap.cpu) : nullptr;
+    sdd = lap.sdd ? new SDD(*lap.sdd) : nullptr;
+    gpu = lap.gpu ? new GPU(*lap.gpu) : nullptr;
+    ram = lap.ram ? new RAM(*lap.ram) : nullptr;
 }
 
-
+Laptop::~Laptop()
+{
+    if (name != nullptr) delete[]name;
+    if (color != nullptr) delete[]color;
+    if (cpu != nullptr) delete cpu;
+    if (sdd != nullptr) delete sdd;
+    if (gpu != nullptr) delete gpu;
+    if (ram != nullptr) delete ram;
+}
