@@ -126,27 +126,17 @@ const char* Laptop::get_Lap_color()
     return color;
 }
 
-Laptop::Laptop(const Laptop& lap): price(lap.price)
-{
-    if (lap.name)
-    {
-        name = new char[strlen(lap.name) + 1];
-        strcpy_s(name, strlen(lap.name) + 1, lap.name);
-    }
-    else name = nullptr;
-
-    if (lap.color)
-    {
-        color = new char[strlen(lap.color) + 1];
-        strcpy_s(color, strlen(lap.color) + 1, lap.color);
-    }
-    else color = nullptr;
-
-    cpu = lap.cpu ? new CPU(*lap.cpu) : nullptr;
-    sdd = lap.sdd ? new SDD(*lap.sdd) : nullptr;
-    gpu = lap.gpu ? new GPU(*lap.gpu) : nullptr;
-    ram = lap.ram ? new RAM(*lap.ram) : nullptr;
-}
+Laptop::Laptop(const Laptop& lap)
+    : Laptop(
+        lap.name,
+        lap.price,
+        lap.color,
+        lap.cpu ? new CPU(*lap.cpu) : nullptr,
+        lap.sdd ? new SDD(*lap.sdd) : nullptr,
+        lap.gpu ? new GPU(*lap.gpu) : nullptr,
+        lap.ram ? new RAM(*lap.ram) : nullptr
+    )
+{}
 
 Laptop::~Laptop()
 {

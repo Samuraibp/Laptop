@@ -30,14 +30,9 @@ int SDD::get_memory()
 	return memory;
 }
 
-SDD::SDD(const SDD& sdd): memory(sdd.memory)
-{
-	if (sdd.name) {
-		name = new char[strlen(sdd.name) + 1];
-		strcpy_s(name, strlen(sdd.name) + 1, sdd.name);
-	}
-	else name = nullptr;
-}
+SDD::SDD(const SDD& sdd)
+	: SDD (sdd.name, sdd.memory)
+{}
 
 SDD::~SDD()
 {

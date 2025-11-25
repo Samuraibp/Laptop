@@ -41,14 +41,9 @@ int CPU::get_flow()
 	return flow;
 }
 
-CPU::CPU(const CPU& cpu): core(cpu.core), flow(cpu.flow)
-{
-	if (cpu.name) {
-		name = new char[strlen(cpu.name) + 1];
-		strcpy_s(name, strlen(cpu.name) + 1, cpu.name);
-	}
-	else name = nullptr;
-}
+CPU::CPU(const CPU& cpu)
+	: CPU(cpu.name, cpu.core, cpu.flow)
+{}
 
 CPU::~CPU()
 {

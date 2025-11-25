@@ -54,19 +54,9 @@ const char* RAM::get_RAM_memory_type()
 	return memory_type;
 }
 
-RAM::RAM(const RAM& ram) : memory(ram.memory), clock_frequency(ram.clock_frequency)
-{
-	if (ram.name) {
-		name = new char[strlen(ram.name) + 1];
-		strcpy_s(name, strlen(ram.name) + 1, ram.name);
-	}
-	else name = nullptr;
-	if (ram.memory_type) {
-		memory_type = new char[strlen(ram.memory_type) + 1];
-		strcpy_s(memory_type, strlen(ram.memory_type) + 1, ram.memory_type);
-	}
-	else memory_type = nullptr;
-}
+RAM::RAM(const RAM& ram)
+	: RAM (ram.name, ram.memory, ram.clock_frequency, ram.memory_type)
+{}
 
 RAM::~RAM()
 {
