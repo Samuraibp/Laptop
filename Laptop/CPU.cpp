@@ -13,42 +13,23 @@ CPU::CPU(const char* Name, int Core, int Flow): core(Core), flow(Flow)
 
 void CPU::set_CPU_name(const char* Name)
 {
-	if (name != nullptr) delete[]name;
+	delete[]name;
 	name = new char[strlen(Name) + 1];
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void CPU::set_CPU_core(int Core)
-{
-	core = Core;
-}
+void CPU::set_CPU_core(int Core) { core = Core; }
 
+void CPU::set_CPU_flow(int Flow) { flow = Flow; }
 
-void CPU::set_CPU_flow(int Flow)
-{
-	flow = Flow;
-}
+const char* CPU::get_CPU_name() { return name; }
 
-const char* CPU::get_CPU_name()
-{
-	return name;
-}
+int CPU::get_core() { return core; }
 
-int CPU::get_core()
-{
-	return core;
-}
-
-int CPU::get_flow()
-{
-	return flow;
-}
+int CPU::get_flow() { return flow; }
 
 CPU::CPU(const CPU& cpu)
 	: CPU(cpu.name, cpu.core, cpu.flow)
 {}
 
-CPU::~CPU()
-{
-	delete[]name;
-}
+CPU::~CPU() { delete[]name; }

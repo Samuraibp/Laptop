@@ -23,7 +23,7 @@ void Laptop::set_Lap_name()
 	char Name[100];
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cin.getline(Name, sizeof(Name));
-	if (name != nullptr) delete[]name;
+	delete[]name;
 	name = new char[strlen(Name) + 1];
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
@@ -37,16 +37,18 @@ void Laptop::set_Lap_price()
 
 void Laptop::set_Lap_color()
 {
-	char color[100];
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cin.getline(color, sizeof(color));
-	if (this->color != nullptr) delete[]this->color;
-	this->color = new char[strlen(color) + 1];
-	strcpy_s(this->color, strlen(color) + 1, color);
+    char Color[100];
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.getline(Color, sizeof(Color));
+    delete[] color;
+    color = new char[strlen(Color) + 1];
+    strcpy_s(color, strlen(Color) + 1, Color);
 }
 
 void Laptop::set_Lap_cpu()
 {
+    if (!cpu) return;
+
     char Name[100];
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.getline(Name, sizeof(Name));
@@ -65,6 +67,8 @@ void Laptop::set_Lap_cpu()
 
 void Laptop::set_Lap_sdd()
 {
+    if (!sdd) return;
+
     char Name[100];
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.getline(Name, sizeof(Name));
@@ -79,6 +83,8 @@ void Laptop::set_Lap_sdd()
 
 void Laptop::set_Lap_gpu()
 {
+    if (!gpu) return;
+
     char Name[100];
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.getline(Name, sizeof(Name));
@@ -97,6 +103,8 @@ void Laptop::set_Lap_gpu()
 
 void Laptop::set_Lap_ram()
 {
+    if (!ram) return;
+
     char Name[100];
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.getline(Name, sizeof(Name));
@@ -118,27 +126,15 @@ void Laptop::set_Lap_ram()
     ram->set_RAM_memory_type(type);
 }
 
-const char* Laptop::get_Lap_name()
-{
-    return name;
-}
+const char* Laptop::get_Lap_name() { return name; }
 
-int Laptop::get_Lap_price()
-{
-    return price;
-}
+int Laptop::get_Lap_price() { return price; }
 
-const char* Laptop::get_Lap_color()
-{
-    return color;
-}
+const char* Laptop::get_Lap_color() { return color; }
 
 int Laptop::laptopCount = 0;
 
-int Laptop::GetlaptopCount()
-{
-    return laptopCount;
-}
+int Laptop::GetlaptopCount() { return laptopCount; }
 
 Laptop::Laptop(const Laptop& lap)
     : Laptop(
