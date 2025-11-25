@@ -4,10 +4,16 @@ using namespace std;
 
 RAM::RAM(const char* Name, int mem, int clock, const char* type): memory(mem), clock_frequency(clock)
 {
-	name = new char[strlen(Name) + 1];
-	strcpy_s(name, strlen(Name) + 1, Name);
-	memory_type = new char[strlen(type) + 1];
-	strcpy_s(memory_type, strlen(type) + 1, type);
+	if (Name) {
+		name = new char[strlen(Name) + 1];
+		strcpy_s(name, strlen(Name) + 1, Name);
+	}
+	else name = nullptr;
+	if (type) {
+		memory_type = new char[strlen(type) + 1];
+		strcpy_s(memory_type, strlen(type) + 1, type);
+	}
+	else type = nullptr;
 }
 
 void RAM::set_RAM_name(const char* Name)

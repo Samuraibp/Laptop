@@ -4,8 +4,11 @@ using namespace std;
 
 GPU::GPU(const char* Name, int mem, int clock): memory(mem), clock_frequency(clock)
 {
-	name = new char[strlen(Name) + 1];
-	strcpy_s(name, strlen(Name) + 1, Name);
+	if (Name) {
+		name = new char[strlen(Name) + 1];
+		strcpy_s(name, strlen(Name) + 1, Name);
+	}
+	else name = nullptr;
 }
 
 void GPU::set_GPU_name(const char* Name)

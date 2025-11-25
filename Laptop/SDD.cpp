@@ -4,8 +4,11 @@ using namespace std;
 
 SDD::SDD(const char* Name, int Memory): memory(Memory)
 {
-	name = new char[strlen(Name) + 1];
-	strcpy_s(name, strlen(Name) + 1, Name);
+	if (Name) {
+		name = new char[strlen(Name) + 1];
+		strcpy_s(name, strlen(Name) + 1, Name);
+	}
+	else name = nullptr;
 }
 
 void SDD::set_SDD_name(const char* Name)

@@ -4,8 +4,11 @@ using namespace std;
 
 CPU::CPU(const char* Name, int Core, int Flow): core(Core), flow(Flow)
 {
-	name = new char[strlen(Name) + 1];
-	strcpy_s(name, strlen(Name) + 1, Name);
+	if (Name) {
+		name = new char[strlen(Name) + 1];
+		strcpy_s(name, strlen(Name) + 1, Name);
+	}
+	else name = nullptr;
 }
 
 void CPU::set_CPU_name(const char* Name)
