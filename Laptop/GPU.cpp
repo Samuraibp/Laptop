@@ -8,27 +8,20 @@ GPU::GPU(const char* Name, int mem, int clock): memory(mem), clock_frequency(clo
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void GPU::set_GPU_name()
+void GPU::set_GPU_name(const char* Name)
 {
-	char Name[100];
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cin.getline(Name, sizeof(Name));
 	if (name != nullptr) delete[]name;
 	name = new char[strlen(Name) + 1];
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void GPU::set_GPU_memory()
+void GPU::set_GPU_memory(int mem)
 {
-	int mem;
-	cin >> mem;
 	memory = mem;
 }
 
-void GPU::set_clock_frequency()
+void GPU::set_GPU_clock_frequency(int clock)
 {
-	int clock;
-	cin >> clock;
 	clock_frequency = clock;
 }
 

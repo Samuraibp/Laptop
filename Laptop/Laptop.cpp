@@ -70,4 +70,22 @@ void Laptop::set_Lap_sdd()
     sdd->set_SDD_memory(Mem);
 }
 
+void Laptop::set_Lap_gpu()
+{
+    char Name[100];
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.getline(Name, sizeof(Name));
+
+    delete[] gpu->get_GPU_name();
+    gpu->set_GPU_name(Name);
+
+    int mem;
+    cin >> mem;
+    gpu->set_GPU_memory(mem);
+
+    int clock;
+    cin >> clock;
+    gpu->set_GPU_clock_frequency(clock);
+}
+
 
