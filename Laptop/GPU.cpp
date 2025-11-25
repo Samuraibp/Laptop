@@ -49,5 +49,5 @@ GPU::GPU(const GPU& gpu)
 
 GPU::~GPU()
 {
-	if (name != nullptr) delete[]name;
+	delete[]name;
 }

@@ -15,6 +15,7 @@ Laptop::Laptop(const char* Name, int prc, const char* Color, CPU* Cpu, SDD* Sdd,
         strcpy_s(color, strlen(Color) + 1, Color);
     }
     else color = nullptr;
+    laptopCount++;
 }
 
 void Laptop::set_Lap_name()
@@ -55,11 +56,11 @@ void Laptop::set_Lap_cpu()
 
     int Core;
     cin >> Core;
-    cpu->set_core(Core);
+    cpu->set_CPU_core(Core);
 
     int Flow;
     cin >> Flow;
-    cpu->set_flow(Flow);
+    cpu->set_CPU_flow(Flow);
 }
 
 void Laptop::set_Lap_sdd()
@@ -100,7 +101,7 @@ void Laptop::set_Lap_ram()
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.getline(Name, sizeof(Name));
     delete[] ram->get_RAM_name();
-    gpu->set_GPU_name(Name);
+    ram->set_RAM_name(Name);
 
     int mem;
     cin >> mem;
@@ -132,6 +133,13 @@ const char* Laptop::get_Lap_color()
     return color;
 }
 
+int Laptop::laptopCount = 0;
+
+int Laptop::GetlaptopCount()
+{
+    return laptopCount;
+}
+
 Laptop::Laptop(const Laptop& lap)
     : Laptop(
         lap.name,
@@ -146,10 +154,12 @@ Laptop::Laptop(const Laptop& lap)
 
 Laptop::~Laptop()
 {
-    if (name != nullptr) delete[]name;
-    if (color != nullptr) delete[]color;
-    if (cpu != nullptr) delete cpu;
-    if (sdd != nullptr) delete sdd;
-    if (gpu != nullptr) delete gpu;
-    if (ram != nullptr) delete ram;
+    delete[] name;
+    delete[] color;
+    delete cpu;
+    delete sdd;
+    delete gpu;
+    delete ram;
+    laptopCount--;
 }
+

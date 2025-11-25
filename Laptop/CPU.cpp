@@ -18,13 +18,13 @@ void CPU::set_CPU_name(const char* Name)
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void CPU::set_core(int Core)
+void CPU::set_CPU_core(int Core)
 {
 	core = Core;
 }
 
 
-void CPU::set_flow(int Flow)
+void CPU::set_CPU_flow(int Flow)
 {
 	flow = Flow;
 }
@@ -50,5 +50,5 @@ CPU::CPU(const CPU& cpu)
 
 CPU::~CPU()
 {
-	if (name != nullptr) delete[]name;
+	delete[]name;
 }

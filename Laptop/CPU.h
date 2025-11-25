@@ -8,8 +8,8 @@ private:
 public:
 	CPU(const char* Name, int Core, int Flow);
 	void set_CPU_name(const char* Name);
-	void set_core(int Core);
-	void set_flow(int Flow);
+	void set_CPU_core(int Core);
+	void set_CPU_flow(int Flow);
 	const char* get_CPU_name();
 	int get_core();
 	int get_flow();

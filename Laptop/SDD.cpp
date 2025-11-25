@@ -39,5 +39,5 @@ SDD::SDD(const SDD& sdd)
 
 SDD::~SDD()
 {
-	if (name != nullptr) delete[]name;
+	delete[]name;
 }

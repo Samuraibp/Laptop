@@ -66,6 +66,6 @@ RAM::RAM(const RAM& ram)
 
 RAM::~RAM()
 {
-	if (name != nullptr) delete[]name;
-	if (memory_type != nullptr) delete[]memory_type;
+	delete[]name;
+	delete[]memory_type;
 }
