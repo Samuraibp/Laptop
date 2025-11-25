@@ -2,13 +2,13 @@
 #include <iostream>
 using namespace std;
 
-Laptop::Laptop(const char* Name, int prc, const char* ñolor, CPU* Cpu, SDD* Sdd, GPU* Gpu, RAM* Ram): price(prc), cpu(Cpu), sdd(Sdd), gpu(Gpu), ram(Ram)
+Laptop::Laptop(const char* Name, int prc, const char* Color, CPU* Cpu, SDD* Sdd, GPU* Gpu, RAM* Ram): price(prc), cpu(Cpu), sdd(Sdd), gpu(Gpu), ram(Ram)
 {
     name = new char[strlen(Name) + 1];
     strcpy_s(name, strlen(Name) + 1, Name);
 
-    this->color = new char[strlen(color) + 1];
-    strcpy_s(this->color, strlen(color) + 1, color);
+    color = new char[strlen(Color) + 1];
+    strcpy_s(color, strlen(Color) + 1, Color);
 }
 
 void Laptop::set_Lap_name()
@@ -56,5 +56,18 @@ void Laptop::set_Lap_cpu()
     cpu->set_flow(Flow);
 }
 
+void Laptop::set_Lap_sdd()
+{
+    char Name[100];
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.getline(Name, sizeof(Name));
+
+    delete[] sdd->get_SDD_name();
+    sdd->set_SDD_name(Name);
+
+    int Mem;
+    cin >> Mem;
+    sdd->set_SDD_memory(Mem);
+}
 
 

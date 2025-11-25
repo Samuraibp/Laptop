@@ -8,20 +8,15 @@ SDD::SDD(const char* Name, int Memory): memory(Memory)
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void SDD::set_SDD_name()
+void SDD::set_SDD_name(const char* Name)
 {
-	char Name[100];
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cin.getline(Name, sizeof(Name));
 	if (name != nullptr) delete[]name;
 	name = new char[strlen(Name) + 1];
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void SDD::set_SDD_memory()
+void SDD::set_SDD_memory(int Mem)
 {
-	int Mem;
-	cin >> Mem;
 	memory = Mem;
 }
 

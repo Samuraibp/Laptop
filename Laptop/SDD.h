@@ -5,8 +5,8 @@ class SDD
 	int memory;
 public:
 	SDD(const char* name, int memory);
-	void set_SDD_name();
-	void set_SDD_memory();
+	void set_SDD_name(const char* Name);
+	void set_SDD_memory(int Mem);
 	const char* get_SDD_name();
 	int get_memory();
 	SDD(const SDD& sdd);
