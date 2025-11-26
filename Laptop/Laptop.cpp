@@ -152,7 +152,6 @@ void Laptop::set_Lap_ram()
         ram = new RAM(nullptr, 0, 0, nullptr);
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
     char Name[100];
     cout << "Enter the name of RAM: ";
     cin.getline(Name, sizeof(Name));
@@ -164,6 +163,7 @@ void Laptop::set_Lap_ram()
     int clock = safeIntInput("Enter RAM clock frequency (MHz): ");
     ram->set_RAM_clock_frequency(clock);
 
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     char type[100];
     cout << "Enter RAM memory type: ";
     cin.getline(type, sizeof(type));
