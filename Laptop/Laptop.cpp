@@ -22,10 +22,29 @@ Laptop::Laptop()
     : Laptop(nullptr, 0, nullptr, nullptr, nullptr, nullptr, nullptr)
 {}
 
+int Laptop::safeIntInput(const char* msg)
+{
+    int value;
+    while (true)
+    {
+        cout << msg;
+        if (cin >> value && value >= 0)
+        {
+            return value;
+        }
+
+        cout << "Invalid input! Enter a positive number.\n";
+
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+}
+
 void Laptop::set_Lap_name()
 {
 	char Name[100];
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Enter the name of Laptop: ";
 	cin.getline(Name, sizeof(Name));
 	delete[]name;
 	name = new char[strlen(Name) + 1];
@@ -34,15 +53,37 @@ void Laptop::set_Lap_name()
 
 void Laptop::set_Lap_price()
 {
-	int prc;
-	cin >> prc;
-	price = prc;
+    cout << "Enter the price of Laptop: ";
+    int prc;
+
+    while (true)
+    {
+        cin >> prc;
+
+        if (cin.fail())
+        {
+            cin.clear(); 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cout << "Invalid input! Enter a number: ";
+        }
+        else if (prc < 0)
+        {
+            cout << "Price cannot be negative! Enter again: ";
+        }
+        else
+        {
+            break; 
+        }
+    }
+    price = prc;
 }
+
 
 void Laptop::set_Lap_color()
 {
     char Color[100];
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Enter the color of Laptop: ";
     cin.getline(Color, sizeof(Color));
     delete[] color;
     color = new char[strlen(Color) + 1];
@@ -51,84 +92,84 @@ void Laptop::set_Lap_color()
 
 void Laptop::set_Lap_cpu()
 {
-    if (!cpu) return;
+    if (!cpu) {
+        cpu = new CPU(nullptr, 0, 0);
+    }
 
-    char Name[100];
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    char Name[100];
+    cout << "Enter the name of CPU: ";
     cin.getline(Name, sizeof(Name));
+    cpu->set_CPU_name(Name);
 
-    delete[] cpu->get_CPU_name();
-    cpu->set_CPU_name(Name);          
-
-    int Core;
-    cin >> Core;
+    int Core = safeIntInput("Enter the number of cores: ");
     cpu->set_CPU_core(Core);
 
-    int Flow;
-    cin >> Flow;
+    int Flow = safeIntInput("Enter the number of flows: ");
     cpu->set_CPU_flow(Flow);
 }
 
+
 void Laptop::set_Lap_sdd()
 {
-    if (!sdd) return;
+    if (!sdd)
+        sdd = new SDD(nullptr, 0);
 
-    char Name[100];
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    char Name[100];
+    cout << "Enter the name of SDD: ";
     cin.getline(Name, sizeof(Name));
-
-    delete[] sdd->get_SDD_name();
     sdd->set_SDD_name(Name);
 
-    int Mem;
-    cin >> Mem;
+    int Mem = safeIntInput("Enter the memory size (GB): ");
     sdd->set_SDD_memory(Mem);
 }
 
+
 void Laptop::set_Lap_gpu()
 {
-    if (!gpu) return;
+    if (!gpu)
+        gpu = new GPU(nullptr, 0, 0);
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     char Name[100];
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Enter the name of GPU: ";
     cin.getline(Name, sizeof(Name));
-
-    delete[] gpu->get_GPU_name();
     gpu->set_GPU_name(Name);
 
-    int mem;
-    cin >> mem;
+    int mem = safeIntInput("Enter GPU memory (GB): ");
     gpu->set_GPU_memory(mem);
 
-    int clock;
-    cin >> clock;
+    int clock = safeIntInput("Enter GPU clock frequency (MHz): ");
     gpu->set_GPU_clock_frequency(clock);
 }
 
+
 void Laptop::set_Lap_ram()
 {
-    if (!ram) return;
+    if (!ram)
+        ram = new RAM(nullptr, 0, 0, nullptr);
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     char Name[100];
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Enter the name of RAM: ";
     cin.getline(Name, sizeof(Name));
-    delete[] ram->get_RAM_name();
     ram->set_RAM_name(Name);
 
-    int mem;
-    cin >> mem;
+    int mem = safeIntInput("Enter RAM memory (GB): ");
     ram->set_RAM_memory(mem);
 
-    int clock;
-    cin >> clock;
+    int clock = safeIntInput("Enter RAM clock frequency (MHz): ");
     ram->set_RAM_clock_frequency(clock);
 
     char type[100];
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Enter RAM memory type: ";
     cin.getline(type, sizeof(type));
-    delete[] ram->get_RAM_memory_type();
     ram->set_RAM_memory_type(type);
 }
+
 
 const char* Laptop::get_Lap_name() { return name; }
 
@@ -136,21 +177,58 @@ int Laptop::get_Lap_price() { return price; }
 
 const char* Laptop::get_Lap_color() { return color; }
 
+CPU* Laptop::get_Lap_cpu() { 
+    cout << "CPU Core: " << cpu->get_CPU_core() << endl;
+    cout << "CPU Flow: " << cpu->get_CPU_flow() << endl;
+    return cpu;
+}
+
+SDD* Laptop::get_Lap_sdd() {
+    cout << "SDD Memory: " << sdd->get_memory() << endl;
+    return sdd;
+}
+
+GPU* Laptop::get_Lap_gpu() {
+    cout << "GPU Memory: " << gpu->get_GPU_memory() << endl;
+    cout << "GPU Clock frequency: " << gpu->get_GPU_clock_frequency() << endl;
+    return gpu;
+}
+
+RAM* Laptop::get_Lap_ram() {
+    cout << "RAM Memory: " << ram->get_RAM_memory() << endl;
+    cout << "RAM Clock frequency: " << ram->get_RAM_clock_frequency() << endl;
+    cout << "RAM Memory type: " << ram->get_RAM_memory_type() << endl;
+    return ram;
+}
+
 int Laptop::laptopCount = 0;
 
 int Laptop::GetlaptopCount() { return laptopCount; }
 
 Laptop::Laptop(const Laptop& lap)
-    : Laptop(
-        lap.name,
-        lap.price,
-        lap.color,
-        lap.cpu ? new CPU(*lap.cpu) : nullptr,
-        lap.sdd ? new SDD(*lap.sdd) : nullptr,
-        lap.gpu ? new GPU(*lap.gpu) : nullptr,
-        lap.ram ? new RAM(*lap.ram) : nullptr
-    )
-{}
+{
+    if (lap.name) {
+        name = new char[strlen(lap.name) + 1];
+        strcpy_s(name, strlen(lap.name) + 1, lap.name);
+    }
+    else name = nullptr;
+
+    if (lap.color) {
+        color = new char[strlen(lap.color) + 1];
+        strcpy_s(color, strlen(color) + 1, lap.color);
+    }
+    else color = nullptr;
+
+    price = lap.price;
+
+    cpu = lap.cpu ? new CPU(*lap.cpu) : nullptr;
+    sdd = lap.sdd ? new SDD(*lap.sdd) : nullptr;
+    gpu = lap.gpu ? new GPU(*lap.gpu) : nullptr;
+    ram = lap.ram ? new RAM(*lap.ram) : nullptr;
+
+    laptopCount++;
+}
+
 
 Laptop::~Laptop()
 {

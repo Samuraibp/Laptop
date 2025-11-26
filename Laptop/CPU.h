@@ -11,8 +11,8 @@ public:
 	void set_CPU_core(int Core);
 	void set_CPU_flow(int Flow);
 	const char* get_CPU_name();
-	int get_core();
-	int get_flow();
+	int get_CPU_core();
+	int get_CPU_flow();
 	CPU(const CPU &cpu);
 	~CPU();
 };

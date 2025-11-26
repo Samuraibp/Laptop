@@ -18,21 +18,47 @@ RAM::RAM(const char* Name, int mem, int clock, const char* type): memory(mem), c
 
 void RAM::set_RAM_name(const char* Name)
 {
-	delete[]name;
+	if (name)
+		delete[] name;
+
+	if (!Name)
+	{
+		name = nullptr;
+		return;
+	}
+
 	name = new char[strlen(Name) + 1];
 	strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void RAM::set_RAM_memory(int mem) { memory = mem; }
 
-void RAM::set_RAM_clock_frequency(int clock) { clock_frequency = clock; }
+void RAM::set_RAM_memory(int mem)
+{
+	if (mem < 0) mem = 0;
+	memory = mem;
+}
+
+void RAM::set_RAM_clock_frequency(int clock)
+{
+	if (clock < 0) clock = 0;
+	clock_frequency = clock;
+}
 
 void RAM::set_RAM_memory_type(const char* type)
 {
-	delete[]memory_type;
+	if (memory_type)
+		delete[] memory_type;
+
+	if (!type)
+	{
+		memory_type = nullptr;
+		return;
+	}
+
 	memory_type = new char[strlen(type) + 1];
 	strcpy_s(memory_type, strlen(type) + 1, type);
 }
+
 
 const char* RAM::get_RAM_name() { return name; }
 

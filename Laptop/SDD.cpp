@@ -13,12 +13,25 @@ SDD::SDD(const char* Name, int Memory): memory(Memory)
 
 void SDD::set_SDD_name(const char* Name)
 {
-	delete[]name;
-	name = new char[strlen(Name) + 1];
-	strcpy_s(name, strlen(Name) + 1, Name);
+    if (name)
+        delete[] name;
+
+    if (!Name)
+    {
+        name = nullptr;
+        return;
+    }
+
+    name = new char[strlen(Name) + 1];
+    strcpy_s(name, strlen(Name) + 1, Name);
 }
 
-void SDD::set_SDD_memory(int Mem) { memory = Mem; }
+
+void SDD::set_SDD_memory(int mem)
+{
+    if (mem < 0) mem = 0;
+    memory = mem;
+}
 
 const char* SDD::get_SDD_name() { return name; }
 
