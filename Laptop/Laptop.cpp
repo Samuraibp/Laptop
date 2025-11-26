@@ -18,6 +18,10 @@ Laptop::Laptop(const char* Name, int prc, const char* Color, CPU* Cpu, SDD* Sdd,
     laptopCount++;
 }
 
+Laptop::Laptop()
+    : Laptop(nullptr, 0, nullptr, nullptr, nullptr, nullptr, nullptr)
+{}
+
 void Laptop::set_Lap_name()
 {
 	char Name[100];

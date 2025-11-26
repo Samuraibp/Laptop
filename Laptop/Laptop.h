@@ -16,6 +16,7 @@ class Laptop
 	static int laptopCount;
 public:
 	Laptop(const char* Name, int prc, const char* Color, CPU* Cpu, SDD* Sdd, GPU* Gpu, RAM* Ram);
+	Laptop();
 	void set_Lap_name();
 	void set_Lap_price();
 	void set_Lap_color();
